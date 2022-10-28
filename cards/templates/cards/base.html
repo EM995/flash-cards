@@ -1,0 +1,134 @@
+<!-- cards/tmeplates/cards/base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Add Some Style -->
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+
+    <title>Flashcards</title>
+</head>
+
+<style>
+    /* Custom CSS */
+
+    :root {
+        --accent: #6e48ad;
+        --accent-bg: white;
+        --bg: #fff;
+        --text: #212121;
+        --text-light: #585858;
+        --border: #d8dae1;
+        --code: #d81b60;
+        --preformatted: #444;
+    }
+
+    article {
+        background-color: var(--marked);
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        padding: 1em;
+        margin: 1em 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    h2, h4 {
+        margin-top: 0;
+    }
+
+    hr {
+        background: var(--accent);
+        border-color: var(--accent);
+    }
+
+    button,
+    a[role="button"] {
+        color: white;
+        text-decoration: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    input, select, textarea {
+        width: 100%;
+    }
+
+    .del-card {
+        text-align: center;
+        position: relative;
+        width: fit-content;
+    }
+
+    .edt-card {
+        text-align: center;
+        position: relative;
+        width: fit-content;
+    }
+
+    /* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  opacity: 0.5;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip .tooltiptext {
+  width: 120px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+  border-color: black transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+</style>
+
+<body>
+    <header>
+        <h1>Flashcards App</h1>
+        {% include "cards/navigation.html" %}
+    </header>
+
+    <main>
+        {% block content %}
+        <h2>Welcome to your Flashcards app!</h2>
+        {% endblock content %}
+    </main>
+
+    <footer>
+        
+    </footer>
+
+</body>
+</html>

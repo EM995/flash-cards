@@ -1,0 +1,43 @@
+<!-- cards/templates/cards/card.html -->
+
+<article id="mycard">
+    
+    {% if not check_card %}
+    <div>
+        <h4>{{ card.question }}</h4>
+        <hr>
+        <p style="font-size: 14px;">{{ card.answer }}</p>
+    </div>
+
+    <div>
+        <a class="edt-card" href="{% url 'card-update' card.id %}" role="button">
+            ✏️
+        </a>
+        
+        <form action="{% url 'card-delete' card.id %}" method="post">
+            {% csrf_token %}
+            <input class="del-card" type="submit" value="🗑️">
+        </form>
+    </div>
+    {% else %}
+    <div style="display:flex;justify-content:space-between;">
+        <h4>{{ card.question }}</h4>
+        {% if last_box_number %}
+            <a href="#" class="tooltip" style="font-size:30px;">🗄
+                <span class="tooltiptext" style="font-size:15px;">Archive</span>
+            </a>
+        {% endif %}
+    </div>
+    <details>
+        <summary>Reveal Answer</summary>
+        <p>{{ card.answer }}</p>
+    </details>
+
+    {% include "cards/card_check_form.html" with solved=True %}
+    {% include "cards/card_check_form.html" with solved=False %}
+
+    <script>
+        document.getElementById('mycard').style ="display:block;"
+    </script>
+    {% endif %}
+</article>
